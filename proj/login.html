@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+
+        <script>
+            function submitForm(form){
+                
+                const email = form.email.value;
+                const password = form.password.value;
+                
+                var url = "https://fouo3kysk4.execute-api.ap-south-1.amazonaws.com/prod/login?email=" + email + "&password=" + password;
+
+                document.getElementById("myform").action = url;
+
+                form.submit();
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <form id = "myform" name = "myform" action = "" method = "POST">
+            <label for = "email">UserName:</label><br><br>
+            <input type = "email" name = "email" id = "email"><br><br>
+
+            <label for = "password">Password:</label><br><br>
+            <input type = "password" name = "password" id = "password"><br><br>
+
+            <input type = "button" onclick = "submitForm(this.form)" value = "Submit">
+        </form>
+    </body>
+</html>

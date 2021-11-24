@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+
+        <script>
+            function submitForm(form){
+                
+                const age = form.age.value;
+                
+                
+                var url = "https://fouo3kysk4.execute-api.ap-south-1.amazonaws.com/prod/getage?age=" + age;
+
+                document.getElementById("myform").action = url;
+
+                form.submit();
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <form id = "myform" name = "myform" action = "" method = "GET">
+            <label for = "age">Age:</label><br><br>
+            <input type = "age" name = "age" id = "age"><br><br>
+
+            
+
+            <input type = "button" onclick = "submitForm(this.form)" value = "Submit">
+        </form>
+    </body>
+</html>

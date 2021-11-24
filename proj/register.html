@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+
+        <script>
+            function submitForm(form){
+                var request = new XMLHttpRequest();
+                request.open('POST', 'https://fouo3kysk4.execute-api.ap-south-1.amazonaws.com/prod/register', true);
+                request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+                request.setRequestHeader('Access-Control-Allow-Origin', '*');
+                
+                const username = form.username.value;
+                const password = form.password.value;
+                const age = form.age.value;
+                
+
+                var userDetails = {
+                    "username": username,                    
+                    "password": password,
+                    "age":age
+                }
+
+                userDetails = JSON.stringify(userDetails);
+                                request.send(userDetails);
+                
+                request.onreadystatechange = (e) => {   
+                    console.log(request.responseText);
+                }
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <form id = "myform" name = "myform" action = "" method = "POST">
+            <label for = "username">UserName:</label><br><br>
+            <input type = "username" name = "username" id = "username"><br><br>
+
+            
+
+            <label for = "password">Password:</label><br><br>
+            <input type = "password" name = "password" id = "password"><br><br>
+
+            <label for = "age">Age:</label><br><br>
+            <input type = "age" name = "age" id = "age"><br><br>
+
+            <input type = "button" onclick = "submitForm(this.form)" value = "Submit">
+        </form>
+    </body>
+</html>
